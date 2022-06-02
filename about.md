@@ -19,3 +19,11 @@ where *kg* represents the person's weight and *m^2* the person's squared height.
 3. Use the slider to input height and weight.
 3. The "Data" tab panel can be used to navigate and search for specific records inside "BMI_data" dataset.
 4. The "Visualization" tab panel can be used to display data visualization from "BMI_data" dataset.
+
+#### BMI_Data Dataset Description
+* Name    : Name of the patient inputted in the calculator
+* Height  : Height of the patient inputted in the calculator
+* Weight  : Weight of the patient inputted in the calculator
+* BMI     : The calculated BMI derived from patient height and weight
+* Status  : Status of patient based on the BMI
+* Year    : Year of when the data recorded
