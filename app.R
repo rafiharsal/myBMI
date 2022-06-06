@@ -3,6 +3,8 @@ library(shiny)
 library(shinythemes)
 library(dplyr)
 library(ggplot2)
+library(leaflet)
+library(DT)
 
 # User Interface                   
 ui <- fluidPage(theme = shinytheme("flatly"),
@@ -86,7 +88,7 @@ server <- function(input, output, session) {
       })
       
       # Data Table
-      bb_data <- BMI_data
+      bb_data <- read.csv("BMI_data.csv", stringsAsFactors = FALSE )
       bb_data <- data.frame(bb_data)
       output$data <-DT::renderDataTable(datatable(
         bb_data[,c(-1,-13,-14,-15,-18:-35)],filter = 'top',
@@ -98,10 +100,10 @@ server <- function(input, output, session) {
       # Year 2020
       output$pie2020 <- renderPlot({
         
-        under2020 <- nrow(filter(BMI_data, BMI_data$Status == "Underweight", BMI_data$Year == "2020"))
-        normal2020 <- nrow(filter(BMI_data, BMI_data$Status == "Normal", BMI_data$Year == "2020"))
-        overweight2020 <- nrow(filter(BMI_data, BMI_data$Status == "Overweight", BMI_data$Year == "2020"))
-        obese2020 <- nrow(filter(BMI_data, BMI_data$Status == "Obese", BMI_data$Year == "2020"))
+        under2020 <- nrow(filter(bb_data, bb_data$Status == "Underweight", bb_data$Year == "2020"))
+        normal2020 <- nrow(filter(bb_data, bb_data$Status == "Normal", bb_data$Year == "2020"))
+        overweight2020 <- nrow(filter(bb_data, bb_data$Status == "Overweight", bb_data$Year == "2020"))
+        obese2020 <- nrow(filter(bb_data, bb_data$Status == "Obese", bb_data$Year == "2020"))
         
         countStatus20 <- c(under2020, normal2020, overweight2020, obese2020)
         status <- c("Underweight", "Normal", "Overweight", "Obese")
@@ -119,10 +121,10 @@ server <- function(input, output, session) {
       # Year 2021
       output$pie2021 <- renderPlot({
         
-        under2021 <- nrow(filter(BMI_data, BMI_data$Status == "Underweight", BMI_data$Year == "2021"))
-        normal2021 <- nrow(filter(BMI_data, BMI_data$Status == "Normal", BMI_data$Year == "2021"))
-        overweight2021 <- nrow(filter(BMI_data, BMI_data$Status == "Overweight", BMI_data$Year == "2021"))
-        obese2021 <- nrow(filter(BMI_data, BMI_data$Status == "Obese", BMI_data$Year == "2021"))
+        under2021 <- nrow(filter(bb_data, bb_data$Status == "Underweight", bb_data$Year == "2021"))
+        normal2021 <- nrow(filter(bb_data, bb_data$Status == "Normal", bb_data$Year == "2021"))
+        overweight2021 <- nrow(filter(bb_data, bb_data$Status == "Overweight", bb_data$Year == "2021"))
+        obese2021 <- nrow(filter(bb_data, bb_data$Status == "Obese", bb_data$Year == "2021"))
         
         countStatus21 <- c(under2021, normal2021, overweight2021, obese2021)
         status <- c("Underweight", "Normal", "Overweight", "Obese")
@@ -140,10 +142,10 @@ server <- function(input, output, session) {
       # Year2022
       output$pie2022 <- renderPlot({
         
-        under2022 <- nrow(filter(BMI_data, BMI_data$Status == "Underweight", BMI_data$Year == "2022"))
-        normal2022 <- nrow(filter(BMI_data, BMI_data$Status == "Normal", BMI_data$Year == "2022"))
-        overweight2022 <- nrow(filter(BMI_data, BMI_data$Status == "Overweight", BMI_data$Year == "2022"))
-        obese2022 <- nrow(filter(BMI_data, BMI_data$Status == "Obese", BMI_data$Year == "2022"))
+        under2022 <- nrow(filter(bb_data, bb_data$Status == "Underweight", bb_data$Year == "2022"))
+        normal2022 <- nrow(filter(bb_data, bb_data$Status == "Normal", bb_data$Year == "2022"))
+        overweight2022 <- nrow(filter(bb_data, bb_data$Status == "Overweight", bb_data$Year == "2022"))
+        obese2022 <- nrow(filter(bb_data, bb_data$Status == "Obese", bb_data$Year == "2022"))
         
         countStatus22 <- c(under2022, normal2022, overweight2022, obese2022)
         status <- c("Underweight", "Normal", "Overweight", "Obese")
